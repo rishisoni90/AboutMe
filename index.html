@@ -45,7 +45,17 @@
       </div>
 
       <div class="hero-meta-pills">
-        <span class="meta-pill meta-pill--visa">🇺🇸 H1B · Valid through 2031</span>
+        <span class="meta-pill meta-pill--visa work-auth-pill" id="work-auth-pill">
+          <span class="auth-pulse-ring"></span>
+          <span class="auth-dot"></span>
+          <span class="auth-label">🇺🇸 Work Authorized · <span class="auth-rotating" id="auth-rotating">No Sponsorship Needed</span></span>
+          <span class="auth-tooltip">
+            <span class="tooltip-inner">
+              <span class="tooltip-title">✅ No Sponsorship Required</span>
+              <span class="tooltip-body">Active US work authorization · Long-term valid · Based in Florida</span>
+            </span>
+          </span>
+        </span>
         <span class="meta-pill meta-pill--location">📍 Florida, USA</span>
         <span class="meta-pill meta-pill--work">💼 Open to Remote · Hybrid · Onsite</span>
       </div>
@@ -171,7 +181,7 @@
               <span class="visa-icon">🇺🇸</span>
               <div>
                 <div class="visa-label">Work Authorization</div>
-                <div class="visa-value">H1B Visa &nbsp;·&nbsp; Valid through <strong>2031</strong></div>
+                <div class="visa-value">Authorized to work in the US &nbsp;·&nbsp; <strong>No sponsorship required</strong></div>
               </div>
             </div>
             <div class="visa-item">
@@ -243,7 +253,7 @@
         <div class="section-line"></div>
       </div>
       <p class="case-studies-intro reveal">
-        Detailed technical breakdowns of the systems I built at each client — architecture diagrams, workflow pipelines, tech decisions, and measurable outcomes. Click either card to explore the full story.
+        Detailed technical breakdowns of the systems I built at each client — architecture diagrams, workflow pipelines, tech decisions, and measurable outcomes. Click either card to explore the full story, or <a href="project-explainer.html" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(108,99,255,0.4);">view the plain-English explainer →</a>
       </p>
 
       <div class="case-studies-grid">
@@ -455,6 +465,31 @@
 
   <!-- ── TOAST ── -->
   <div class="toast" id="toast">✅ Message sent! I'll get back to you soon.</div>
+
+  <!-- Work Auth rotating text -->
+  <script>
+    (function() {
+      const phrases = [
+        "No Sponsorship Needed",
+        "Ready to Start",
+        "US Work Auth Active",
+        "Long-Term Eligible"
+      ];
+      let idx = 0;
+      const el = document.getElementById('auth-rotating');
+      if (!el) return;
+      setInterval(() => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(-6px)';
+        setTimeout(() => {
+          idx = (idx + 1) % phrases.length;
+          el.textContent = phrases[idx];
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 280);
+      }, 2800);
+    })();
+  </script>
 
   <script src="script.js"></script>
 </body>
